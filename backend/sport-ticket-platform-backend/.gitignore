@@ -1,0 +1,33 @@
+# Maven build output
+target/
+*.class
+*.jar
+*.war
+
+# SSL certificates
+src/main/resources/*.p12
+src/main/resources/*.pem
+src/main/resources/*.jks
+src/main/resources/*.key
+
+# Environment / secrets
+.env
+.env.local
+application-secrets.properties
+application-local.properties
+
+# Logs
+logs/
+*.log
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.iml
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
