@@ -413,3 +413,194 @@ INSERT INTO Reservation (
  '2026-08-08 11:00:00',
  '2026-08-08 12:00:00');
 
+
+-- =========================================================
+-- 13. PAYMENT
+-- =========================================================
+
+INSERT INTO Payment (
+    paymentId,
+    reservationId,
+    amount,
+    currency,
+    method,
+    status,
+    transactionId,
+    paymentDate,
+    completedAt
+) VALUES
+(1, 1, 5000000, 'IRR', 'card', 'success',
+ 'TXN-0001', '2026-08-01 10:20:00', '2026-08-01 10:20:30'),
+
+(2, 2, 12000000, 'IRR', 'card', 'success',
+ 'TXN-0002', '2026-08-01 11:20:00', '2026-08-01 11:20:30'),
+
+(3, 3, 4500000, 'IRR', 'wallet', 'success',
+ 'TXN-0003', '2026-08-02 10:20:00', '2026-08-02 10:20:30'),
+
+(4, 4, 10000000, 'IRR', 'card', 'success',
+ 'TXN-0004', '2026-08-02 12:20:00', '2026-08-02 12:20:30'),
+
+(5, 5, 5500000, 'IRR', 'card', 'success',
+ 'TXN-0005', '2026-08-03 09:20:00', '2026-08-03 09:20:30'),
+
+(6, 6, 15000000, 'IRR', 'wallet', 'success',
+ 'TXN-0006', '2026-08-03 13:20:00', '2026-08-03 13:20:30'),
+
+(7, 7, 4000000, 'IRR', 'card', 'success',
+ 'TXN-0007', '2026-08-04 10:20:00', '2026-08-04 10:20:30'),
+
+(8, 8, 9000000, 'IRR', 'card', 'success',
+ 'TXN-0008', '2026-08-04 14:20:00', '2026-08-04 14:20:30'),
+
+(9, 9, 3500000, 'IRR', 'wallet', 'success',
+ 'TXN-0009', '2026-08-05 11:20:00', '2026-08-05 11:20:30'),
+
+(10, 10, 8000000, 'IRR', 'card', 'success',
+ 'TXN-0010', '2026-08-05 15:20:00', '2026-08-05 15:20:30');
+
+
+-- =========================================================
+-- 14. CANCELLATION
+-- =========================================================
+
+INSERT INTO Cancellation (
+    cancellationId,
+    userId,
+    ticketId,
+    originalPrice,
+    penaltyPercent,
+    refundAmount,
+    status,
+    requestDate,
+    reviewedAt,
+    reviewedByAdminId
+) VALUES
+(1, 1, 11, 3000000, 10, 2700000,
+ 'approved', '2026-08-06 11:00:00',
+ '2026-08-06 12:00:00', 11),
+
+(2, 2, 12, 7500000, 10, 6750000,
+ 'approved', '2026-08-06 13:00:00',
+ '2026-08-06 14:00:00', 12),
+
+(3, 3, 13, 6000000, 15, 5100000,
+ 'approved', '2026-08-07 11:00:00',
+ '2026-08-07 12:00:00', 11),
+
+(4, 4, 14, 11000000, 20, 8800000,
+ 'approved', '2026-08-07 15:00:00',
+ '2026-08-07 16:00:00', 12),
+
+(5, 5, 15, 2500000, 10, 2250000,
+ 'approved', '2026-08-08 12:00:00',
+ '2026-08-08 13:00:00', 11);
+
+
+-- =========================================================
+-- 15. REPORT
+-- =========================================================
+
+INSERT INTO Report (
+    reportId,
+    userId,
+    reservationId,
+    supportId,
+    category,
+    title,
+    content,
+    response,
+    status,
+    createTime,
+    respondedAt
+) VALUES
+
+(1, 1, 1, 11,
+ 'payment',
+ 'Payment issue',
+ 'The payment was successful but the ticket was not displayed immediately.',
+ 'The payment was verified and the ticket is active.',
+ 'resolved',
+ '2026-08-02 09:00:00',
+ '2026-08-02 10:00:00'),
+
+(2, 2, 2, 12,
+ 'reservation',
+ 'Reservation problem',
+ 'I had a problem during reservation.',
+ 'The reservation was checked successfully.',
+ 'resolved',
+ '2026-08-02 11:00:00',
+ '2026-08-02 12:00:00'),
+
+(3, 3, 3, 11,
+ 'ticket',
+ 'Ticket information',
+ 'I need more information about my ticket.',
+ 'Ticket information was provided.',
+ 'resolved',
+ '2026-08-03 09:00:00',
+ '2026-08-03 10:00:00'),
+
+(4, 4, 4, NULL,
+ 'refund',
+ 'Refund request',
+ 'I would like to know the refund status.',
+ NULL,
+ 'pending',
+ '2026-08-04 10:00:00',
+ NULL),
+
+(5, 5, 5, 12,
+ 'payment',
+ 'Payment verification',
+ 'Please verify my payment.',
+ 'Payment was successfully verified.',
+ 'resolved',
+ '2026-08-04 11:00:00',
+ '2026-08-04 12:00:00'),
+
+(6, 6, 6, 11,
+ 'ticket',
+ 'Ticket issue',
+ 'There was a problem with the ticket information.',
+ 'The ticket information was corrected.',
+ 'resolved',
+ '2026-08-05 09:00:00',
+ '2026-08-05 10:00:00'),
+
+(7, 7, 7, NULL,
+ 'reservation',
+ 'Reservation cancellation',
+ 'I want to cancel my reservation.',
+ NULL,
+ 'pending',
+ '2026-08-06 09:00:00',
+ NULL),
+
+(8, 8, 8, 12,
+ 'payment',
+ 'Payment status',
+ 'Please check my payment status.',
+ 'Your payment was successful.',
+ 'resolved',
+ '2026-08-06 10:00:00',
+ '2026-08-06 11:00:00'),
+
+(9, 9, 9, 11,
+ 'ticket',
+ 'Ticket access',
+ 'I could not access my ticket.',
+ 'The ticket was made available.',
+ 'resolved',
+ '2026-08-07 09:00:00',
+ '2026-08-07 10:00:00'),
+
+(10, 10, 10, NULL,
+ 'other',
+ 'General question',
+ 'I have a question about the ticket system.',
+ NULL,
+ 'pending',
+ '2026-08-08 10:00:00',
+ NULL);
