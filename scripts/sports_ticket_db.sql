@@ -110,3 +110,61 @@ CREATE TABLE TicketDetails (
     FOREIGN KEY (ticketId) REFERENCES Ticket(ticketId)
 );
 
+CREATE TABLE Reservation (
+    reservationId INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    ticketId INT NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'reserved',
+    reservationDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    expiresAt DATETIME NOT NULL,
+    FOREIGN KEY (userId) REFERENCES User(userId),
+    FOREIGN KEY (ticketId) REFERENCES Ticket(ticketId)
+);
+
+CREATE TABLE Payment (
+    paymentId INT AUTO_INCREMENT PRIMARY KEY,
+    reservationId INT NOT NULL,
+    userId INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL CHECK (amount >= 0),
+    currency VARCHAR(10) NOT NULL DEFAULT 'IRR',
+    method VARCHAR(50) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'pending',
+    transactionId VARCHAR(255),
+    paymentDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    completedAt DATETIME NULL,
+    FOREIGN KEY (reservationId) REFERENCES Reservation(reservationId),
+    FOREIGN KEY (userId) REFERENCES User(userId)
+);
+
+CREATE TABLE Cancellation (
+    cancellationId INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    ticketId INT NOT NULL,
+    originalPrice DECIMAL(10,2) NOT NULL DEFAULT 0,
+    penaltyPercent DECIMAL(5,2) NOT NULL DEFAULT 0,
+    refundAmount DECIMAL(10,2) NOT NULL DEFAULT 0,
+    status VARCHAR(50) NOT NULL DEFAULT 'requested',
+    requestDate DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    reviewedAt DATETIME NULL,
+    reviewedByAdminId INT NULL,
+    FOREIGN KEY (userId) REFERENCES User(userId),
+    FOREIGN KEY (ticketId) REFERENCES Ticket(ticketId),
+    FOREIGN KEY (reviewedByAdminId) REFERENCES User(userId)
+);
+
+CREATE TABLE Report (
+    reportId INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    reservationId INT NULL,
+    supportId INT NULL,
+    category VARCHAR(50) NOT NULL,
+    title VARCHAR(255),
+    content VARCHAR(2047),
+    response VARCHAR(2047),
+    status VARCHAR(50) NOT NULL DEFAULT 'pending',
+    createTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    respondedAt DATETIME NULL,
+    FOREIGN KEY (userId) REFERENCES User(userId),
+    FOREIGN KEY (reservationId) REFERENCES Reservation(reservationId),
+    FOREIGN KEY (supportId) REFERENCES User(userId)
+);
