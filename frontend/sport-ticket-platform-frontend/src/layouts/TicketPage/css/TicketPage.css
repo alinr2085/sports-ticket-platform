@@ -1,0 +1,1062 @@
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-wrapper {
+  width: 100%;
+  max-width: 430px;
+
+  position: relative;
+
+  z-index: 100;
+}
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.search-box {
+  width: 280px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(13, 15, 20, 0.72);
+
+  border: 1px solid #292d36;
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  position: relative;
+  z-index: 101;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================================================
+   SEARCH ACTIVE
+========================================================= */
+
+.search-wrapper.search-active .search-box {
+  width: 100%;
+
+  border-color: rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================================
+   SEARCH FOCUS
+========================================================= */
+
+.search-box:focus-within {
+  border-color: rgba(255, 255, 255, 0.45);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.05),
+    0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   SEARCH INPUT
+========================================================= */
+
+.search-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  padding: 0 14px;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  color: #f5f6f8;
+
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 14px;
+}
+
+.search-box input::placeholder {
+  color: #666d7a;
+}
+
+/* =========================================================
+   SEARCH BACK BUTTON
+========================================================= */
+
+.search-back {
+  width: 45px;
+  height: 100%;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: none;
+
+  color: #aeb4c0;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.search-back:hover {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* =========================================================
+   SEARCH SUBMIT
+========================================================= */
+
+.search-submit {
+  width: 46px;
+  height: 100%;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #aeb4c0;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.search-submit:hover:not(:disabled) {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.search-submit:disabled {
+  opacity: 0.35;
+
+  cursor: default;
+}
+
+/* =========================================================
+   SEARCH OPTIONS
+========================================================= */
+
+.search-options {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 6px;
+
+  gap: 6px;
+
+  background: transparent;
+
+  animation: searchOptionsOpen 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* =========================================================
+   SEARCH OPTIONS TITLE
+========================================================= */
+
+.search-options-title {
+  flex-shrink: 0;
+
+  padding: 0 10px;
+
+  color: #777e8c;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
+
+  animation: searchItemIn 0.45s ease both;
+}
+
+/* =========================================================
+   SEARCH OPTIONS LIST
+========================================================= */
+
+.search-options-list {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+/* =========================================================
+   SEARCH OPTION
+========================================================= */
+
+.search-option {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 10px;
+
+  border: 1px solid transparent;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #dfe2e7;
+
+  font-family: var(--font-body, "Inter", sans-serif);
+
+  font-size: 12px;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  animation: searchOptionIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* =========================================================
+   SEARCH OPTION STAGGER
+========================================================= */
+
+.search-option:nth-child(1) {
+  animation-delay: 0.18s;
+}
+
+.search-option:nth-child(2) {
+  animation-delay: 0.38s;
+}
+
+.search-option:nth-child(3) {
+  animation-delay: 0.58s;
+}
+
+/* =========================================================
+   SEARCH OPTION HOVER
+========================================================= */
+
+.search-option:hover {
+  background: rgba(255, 255, 255, 0.09);
+
+  border-color: rgba(255, 255, 255, 0.1);
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   SEARCH OPTION ICON
+========================================================= */
+
+.search-option-icon {
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  font-size: 13px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-option:hover .search-option-icon {
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   SEARCH OPTION ARROW
+========================================================= */
+
+.search-option-arrow {
+  color: #555c69;
+
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.search-option:hover .search-option-arrow {
+  color: #ffffff;
+
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   SEARCH ANIMATIONS
+========================================================= */
+
+@keyframes searchOptionsOpen {
+  from {
+    opacity: 0;
+
+    transform: translateX(-20px) scaleX(0.75);
+
+    transform-origin: left center;
+
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0) scaleX(1);
+
+    transform-origin: left center;
+
+    filter: blur(0);
+  }
+}
+
+@keyframes searchOptionIn {
+  from {
+    opacity: 0;
+
+    transform: translateX(-15px) scale(0.94);
+
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0) scale(1);
+
+    filter: blur(0);
+  }
+}
+
+@keyframes searchItemIn {
+  from {
+    opacity: 0;
+
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.ticket-filter {
+  position: relative;
+
+  width: 92px;
+  min-width: 92px;
+
+  height: 48px;
+
+  z-index: 200;
+}
+
+/* =========================================================
+   FILTER TOGGLE
+========================================================= */
+
+.filter-toggle {
+  width: 92px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0;
+
+  border: 1px solid #292d36;
+
+  border-radius: 12px;
+
+  background: rgba(13, 15, 20, 0.72);
+
+  color: #aeb4c0;
+
+  font-family: var(--font-body, "Inter", sans-serif);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-toggle:hover {
+  color: #ffffff;
+
+  background: rgba(20, 23, 30, 0.9);
+
+  border-color: rgba(255, 255, 255, 0.25);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.filter-icon {
+  font-size: 16px;
+
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.filter-toggle:hover .filter-icon {
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   FILTER PANEL
+   Desktop:
+   از راست به چپ باز می‌شود
+========================================================= */
+
+.filter-panel {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 12px;
+
+  background: rgba(13, 15, 20, 0.92);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  z-index: 210;
+
+  white-space: nowrap;
+
+  animation: filterOpen 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* =========================================================
+   FILTER CLOSE BUTTON
+========================================================= */
+
+.filter-close {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: #777e8c;
+
+  font-size: 19px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.filter-close:hover {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   FILTER ITEM
+========================================================= */
+
+.filter-item {
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+}
+
+.filter-label {
+  color: #777e8c;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   FILTER SEGMENT
+========================================================= */
+
+.filter-segment {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2px;
+
+  padding: 2px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.filter-option {
+  height: 26px;
+
+  padding: 0 8px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #777e8c;
+
+  font-family: var(--font-body, "Inter", sans-serif);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.filter-option:hover {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.filter-option.active {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.13);
+}
+
+/* =========================================================
+   SPORT FILTER
+========================================================= */
+
+.sport-filter {
+  gap: 1px;
+}
+
+.sport-filter .filter-option {
+  width: 28px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   RANGE FILTER
+========================================================= */
+
+.filter-range {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 0 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.filter-range span {
+  color: #555c69;
+
+  font-size: 10px;
+
+  flex-shrink: 0;
+}
+
+.filter-range input {
+  height: 26px;
+
+  padding: 0 4px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #dfe2e7;
+
+  font-family: var(--font-body, "Inter", sans-serif);
+
+  font-size: 10px;
+}
+
+.filter-range input::placeholder {
+  color: #555c69;
+}
+
+.filter-range input[type="number"] {
+  width: 42px;
+
+  appearance: textfield;
+}
+
+.filter-range input[type="number"]::-webkit-inner-spin-button,
+.filter-range input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+
+  margin: 0;
+}
+
+/* =========================================================
+   DATE FILTER
+========================================================= */
+
+.date-range input[type="date"] {
+  width: 100px;
+}
+
+.date-range input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.6);
+
+  opacity: 0.8;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   APPLY FILTER BUTTON
+========================================================= */
+
+.filter-apply {
+  height: 32px;
+
+  flex-shrink: 0;
+
+  padding: 0 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.09);
+
+  color: #ffffff;
+
+  font-family: var(--font-body, "Inter", sans-serif);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.filter-apply:hover {
+  background: rgba(255, 255, 255, 0.15);
+
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.row.mt-3.justify-content-between {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* =========================================================
+   FILTER ANIMATION
+========================================================= */
+
+@keyframes filterOpen {
+  from {
+    opacity: 0;
+
+    transform: scaleX(0.1) translateX(15px);
+
+    transform-origin: right center;
+
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1) translateX(0);
+
+    transform-origin: right center;
+
+    filter: blur(0);
+  }
+}
+/* =========================================================
+   RESPONSIVE - SMALL
+========================================================= */
+
+@media (max-width: 1150px) {
+  /*
+     Search + Filter
+     کاملاً زیر هم
+  */
+
+  .row.mt-3.justify-content-between {
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    gap: 12px;
+  }
+
+  .row.mt-3.justify-content-between > .col-auto {
+    width: 100% !important;
+
+    max-width: 100%;
+
+    flex: 0 0 100%;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Search */
+
+  .search-wrapper {
+    width: 100%;
+
+    max-width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  /* Filter */
+
+  .ticket-filter {
+    width: 100%;
+
+    min-width: 0;
+
+    height: auto;
+  }
+
+  .filter-toggle {
+    width: 100%;
+  }
+
+  /*
+     در موبایل پنل دیگر absolute نیست.
+     پس روی Search یا Ticketها نمی‌افتد.
+  */
+
+  .filter-panel {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    width: 100%;
+
+    min-height: 48px;
+
+    height: auto;
+
+    overflow-x: auto;
+
+    padding: 7px;
+
+    white-space: nowrap;
+
+    scrollbar-width: none;
+
+    animation: filterMobileOpen 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .filter-panel::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE FILTER ANIMATION
+========================================================= */
+
+@keyframes filterMobileOpen {
+  from {
+    opacity: 0;
+
+    transform: translateY(-7px);
+
+    filter: blur(3px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    filter: blur(0);
+  }
+}
+
+/* =========================================================
+   MOBILE SEARCH
+========================================================= */
+
+@media (max-width: 576px) {
+  .search-wrapper {
+    max-width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .search-options {
+    gap: 3px;
+
+    padding: 5px;
+  }
+
+  .search-options-title {
+    display: none;
+  }
+
+  .search-option {
+    padding: 0 5px;
+
+    gap: 5px;
+
+    font-size: 11px;
+  }
+
+  .search-option-icon {
+    width: 23px;
+    height: 23px;
+  }
+
+  .search-option-arrow {
+    display: none;
+  }
+
+  .ticket-card-inner {
+    min-height: auto;
+  }
+
+  .ticket-teams {
+    gap: 8px;
+  }
+
+  .team-name {
+    max-width: 85px;
+
+    font-size: 11px;
+  }
+
+  .stadium-name {
+    font-size: 13px;
+  }
+
+  .section-number {
+    font-size: 9px;
+  }
+
+  .ticket-type {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .filter-panel {
+    align-items: flex-start;
+
+    gap: 6px;
+
+    overflow-x: auto;
+  }
+
+  .filter-label {
+    font-size: 8px;
+  }
+
+  .filter-option {
+    padding: 0 6px;
+
+    font-size: 9px;
+  }
+
+  .filter-range input[type="date"] {
+    width: 90px;
+  }
+
+  .filter-range input[type="number"] {
+    width: 38px;
+  }
+
+  .ticket-teams {
+    gap: 5px;
+  }
+
+  .team {
+    min-width: 60px;
+  }
+
+  .team-crest {
+    width: 38px;
+    height: 38px;
+  }
+
+  .team-crest img {
+    width: 27px;
+    height: 27px;
+  }
+
+  .team-name {
+    max-width: 70px;
+
+    font-size: 10px;
+  }
+
+  .ticket-teams > span {
+    font-size: 9px;
+  }
+}

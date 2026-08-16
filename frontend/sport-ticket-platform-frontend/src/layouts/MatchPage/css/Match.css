@@ -1,0 +1,605 @@
+.match-card {
+  width: 100%;
+  height: 200px;
+
+  position: relative;
+
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  background-color: #0b0d11;
+
+  background-size: cover;
+  background-position: center;
+
+  isolation: isolate;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.match-card:hover {
+  transform: scale(1.02);
+
+  border-color: rgba(245, 246, 248, 0.35);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.match-card:active {
+  transform: scale(0.99);
+}
+
+.match-card.sport-football {
+  background-image: url("https://pikfree.ir/wp-content/uploads/edd/2021/05/stage-lighting-background-3d-Top.jpg");
+  background-size: 100% 200%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.match-card.sport-volleyball {
+  background-image: url("https://tiktarh.com/storage/images/product_image/68c91f4812bbcd63610bf9d3/1758011357-Shsprt1004247(www.tiktarh.com).jpg");
+}
+
+.match-card.sport-basketball {
+  background-image: url("https://tiktarh.com/storage/images/product_image/68d7cd4890e14d032f0ff5fb/1758974032-Shsprt1004605(www.tiktarh.com).jpg");
+}
+
+.match-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(6, 7, 10, 0.92) 0%,
+    rgba(6, 7, 10, 0.75) 45%,
+    rgba(6, 7, 10, 0.88) 100%
+  );
+
+  z-index: 0;
+}
+
+.match-card-inner {
+  position: relative;
+  z-index: 1;
+
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 30px;
+  gap: 30px;
+
+  flex-wrap: nowrap;
+}
+
+.match-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.sport-badge {
+  align-self: flex-start;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: var(--text-0);
+
+  background: rgba(245, 246, 248, 0.1);
+
+  border: 1px solid rgba(245, 246, 248, 0.18);
+
+  padding: 5px 11px;
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(6px);
+}
+
+.match-teams {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 96px;
+}
+
+.team-crest {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: rgba(245, 246, 248, 0.08);
+
+  border: 1px solid var(--line);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  color: var(--white);
+}
+
+.team-name {
+  max-width: 120px;
+
+  font-size: 13.5px;
+  font-weight: 600;
+
+  color: var(--text-0);
+
+  text-align: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs {
+  font-family: var(--font-mono);
+
+  font-size: 12px;
+
+  color: var(--text-2);
+
+  letter-spacing: 0.04em;
+
+  flex-shrink: 0;
+}
+
+.match-meta {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  min-width: 180px;
+  max-width: 250px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 12.5px;
+
+  color: var(--text-1);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta-row .dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--white-dim);
+
+  flex-shrink: 0;
+}
+
+.btn-reserve {
+  flex-shrink: 0;
+
+  background: transparent;
+  color: #fefeff;
+
+  border: 1px solid #fefeff;
+
+  padding: 11px 22px;
+  border-radius: 9px;
+
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13.5px;
+
+  cursor: pointer;
+  transition: 0.15s ease;
+
+  white-space: nowrap;
+}
+
+.btn-reserve:hover {
+  background: #fefeff;
+  color: #0b0d11;
+}
+
+.btn-reserve:active {
+  transform: translateY(1px);
+}
+:root {
+  --bg-0: #050608;
+  --bg-2: #181b21;
+  --line: #262a32;
+  --white: #f5f6f8;
+  --white-dim: #c7cad1;
+  --text-0: #f2f3f5;
+  --text-1: #a2a8b2;
+  --text-2: #5b616c;
+  --red: #ff5d5d;
+  --green: #3dd17c;
+  --radius: 16px;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+.match-box {
+  width: 90vw;
+  max-width: 1300px;
+  margin-inline: auto;
+  background-color: #0b0d11;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  color: var(--text-0);
+  font-family: var(--font-body);
+}
+
+.match-box.sport-football {
+  background-image: url("https://pikfree.ir/wp-content/uploads/edd/2021/05/stage-lighting-background-3d-Top.jpg");
+  background-size: 100% 200%;
+}
+
+.match-box.sport-volleyball {
+  background-image: url("https://tiktarh.com/storage/images/product_image/68c91f4812bbcd63610bf9d3/1758011357-Shsprt1004247(www.tiktarh.com).jpg");
+}
+
+.match-box.sport-basketball {
+  background-image: url("https://tiktarh.com/storage/images/product_image/68d7cd4890e14d032f0ff5fb/1758974032-Shsprt1004605(www.tiktarh.com).jpg");
+}
+
+.match-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 7, 10, 0.96) 0%,
+    rgba(6, 7, 10, 0.82) 50%,
+    rgba(6, 7, 10, 0.94) 100%
+  );
+  z-index: 0;
+}
+
+.match-box-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(28px, 3.5vw, 52px) clamp(32px, 5vw, 72px)
+    clamp(24px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  min-height: clamp(550px, 42vh, 480px);
+}
+
+/* ── TOP ── */
+.match-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: clamp(28px, 4vh, 52px);
+}
+
+.league-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-1);
+  padding: 5px 4px;
+}
+
+.league-pill img {
+  width: clamp(28px, 3vw, 40px);
+  height: clamp(28px, 3vw, 40px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.league-icon-fallback {
+  width: clamp(28px, 3vw, 40px);
+  height: clamp(28px, 3vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(12px, 1.3vw, 16px);
+  font-weight: 800;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.stadium-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(13px, 1.3vw, 16px);
+  color: var(--text-2);
+}
+
+.stadium-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-2);
+  flex-shrink: 0;
+}
+
+.match-teams-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 5vw, 80px);
+  width: 100%;
+  flex: 1;
+}
+
+.team-block {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  min-width: 0;
+  flex: 1;
+}
+
+.team-block.away {
+  flex-direction: row-reverse;
+}
+
+.team-label {
+  min-width: 0;
+  flex: 1;
+  max-width: 320px;
+}
+
+.team-icon {
+  width: clamp(48px, 6vw, 80px);
+  height: clamp(48px, 6vw, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 800;
+  color: var(--white);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.team-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.team-label .team-name {
+  font-size: clamp(13px, 1.4vw, 20px);
+  font-weight: 800;
+  color: var(--text-0);
+  white-space: nowrap;
+  max-width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-label .team-sub {
+  font-size: 12px;
+  color: var(--text-2);
+  margin-top: 3px;
+}
+
+.team-block.away .team-label {
+  text-align: right;
+}
+
+.sport-icon-center {
+  width: clamp(48px, 6vw, 80px);
+  height: clamp(48px, 6vw, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(20px, 2.5vw, 30px);
+  flex-shrink: 0;
+}
+
+/* ── BOTTOM ── */
+.match-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: clamp(24px, 4vh, 48px);
+  padding-top: 16px;
+  border-top: 1px solid rgba(245, 246, 248, 0.07);
+}
+
+.match-datetime {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-1);
+  letter-spacing: 0.02em;
+}
+
+.status-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.04em;
+}
+
+.status-live::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red);
+  animation: blink 1.2s ease infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.status-finished {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.status-finished::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-2);
+}
+
+.btn-see-tickets {
+  padding: 11px 24px;
+  border-radius: 10px;
+  font-size: 13px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(245, 246, 248, 0.35);
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.15s ease;
+  white-space: nowrap;
+  box-shadow: 0 5px 20px rgba(62, 61, 60, 0.4);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-see-tickets:hover {
+  background: var(--white);
+  color: #0b0d11;
+  border-color: var(--white);
+  transform: scale(1.05);
+}
+
+.btn-see-tickets:active {
+  transform: scale(0.99);
+}
+
+@media (max-width: 520px) {
+  .team-label .team-sub {
+    display: none;
+  }
+  .match-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+.tickets-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.tickets-panel.open {
+  max-height: 700px;
+}
+
+.tickets-panel-inner {
+  padding: clamp(20px, 3vh, 32px) 4px; /* پدینگ افقی کوچیک برای جا باز کردن هاور */
+}
+
+.tickets-scroll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 620px;
+  overflow-y: auto;
+  overflow-x: visible; /* مهم: افکت هاور نباید افقی بریده بشه */
+  padding: 12px 16px; /* پدینگ بیشتر دور هر آیتم برای فضای هاور */
+  margin: 0 -16px; /* جبران پدینگ تا عرض کلی حفظ بشه */
+}
+
+.tickets-scroll-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tickets-scroll-list::-webkit-scrollbar-thumb {
+  background: rgba(245, 246, 248, 0.2);
+  border-radius: 999px;
+}
+
+.tickets-status {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-2);
+  font-size: 13px;
+}
+.tickets-scroll-list .ticket-left {
+  transform: translateX(15px) !important;
+}
+
+.tickets-scroll-list .ticket-right {
+  transform: translateX(-55px) !important;
+}
+
+.matches-link:hover {
+  border: 1px solid rgb(200, 194, 194);
+  transform: scale(1.05);
+}

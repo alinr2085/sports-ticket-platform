@@ -1,0 +1,416 @@
+/* card */
+.ticket-card {
+  width: 100%;
+  height: 180px;
+
+  position: relative;
+
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  background-color: #0b0d11;
+
+  background-size: cover;
+  background-position: center;
+
+  isolation: isolate;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.match-date {
+  margin-top: 7px;
+
+  color: #7d8491;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  opacity: 0.85;
+}
+
+.ticket-card:hover {
+  transform: scale(1.02);
+
+  border-color: rgba(245, 246, 248, 0.35);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.ticket-card:active {
+  transform: scale(0.99);
+}
+
+.ticket-card.sport-football {
+  background-image: url("https://pikfree.ir/wp-content/uploads/edd/2021/05/stage-lighting-background-3d-Top.jpg");
+
+  background-size: 100% 200%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ticket-card.sport-volleyball {
+  background-image: url("https://tiktarh.com/storage/images/product_image/68c91f4812bbcd63610bf9d3/1758011357-Shsprt1004247(www.tiktarh.com).jpg");
+}
+
+.ticket-card.sport-basketball {
+  background-image: url("https://tiktarh.com/storage/images/product_image/68d7cd4890e14d032f0ff5fb/1758974032-Shsprt1004605(www.tiktarh.com).jpg");
+}
+.ticket-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(6, 7, 10, 0.94) 0%,
+    rgba(6, 7, 10, 0.72) 50%,
+    rgba(6, 7, 10, 0.94) 100%
+  );
+
+  z-index: 0;
+}
+.ticket-card-inner {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  align-items: center;
+
+  padding: 18px 28px 18px 0;
+
+  gap: 25px;
+}
+.ticket-left {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  margin-right: 30px;
+
+  gap: 12px;
+
+  min-width: 0;
+  transform: translateX(-35px);
+}
+
+.sport-badge {
+  align-self: flex-start;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+
+  color: var(--text-0);
+
+  background: rgba(245, 246, 248, 0.08);
+
+  border: 1px solid rgba(245, 246, 248, 0.16);
+
+  padding: 4px 9px;
+
+  border-radius: 999px;
+
+  backdrop-filter: blur(6px);
+}
+
+.ticket-teams {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 15px;
+}
+
+.team {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 5px;
+
+  min-width: 75px;
+}
+
+.team-crest {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(245, 246, 248, 0.08);
+
+  border: 1px solid var(--line);
+}
+
+.team-name {
+  max-width: 95px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: var(--text-0);
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.match-icon {
+  flex-shrink: 0;
+}
+
+.ticket-center {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  text-align: center;
+}
+
+.stadium-name {
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: #f5f6f8;
+
+  letter-spacing: 0.02em;
+
+  max-width: 230px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.section-number {
+  font-family: var(--font-mono);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  color: #aeb4c0;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding: 4px 10px;
+
+  border-radius: 6px;
+}
+
+.ticket-type {
+  font-family: var(--font-mono);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: #d9dce2;
+}
+
+.ticket-type.vip {
+  color: #f5f6f8;
+
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+.ticket-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  min-width: 180px;
+  max-width: 250px;
+}
+
+.meta-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 12.5px;
+
+  color: var(--text-1);
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.meta-row .dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--white-dim);
+
+  flex-shrink: 0;
+}
+.ticket-right {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 18px;
+
+  min-width: 0;
+  transform: translateX(-25px);
+}
+
+.availability {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
+}
+
+.availability-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+.availability.available {
+  color: #4ade80;
+}
+
+.availability.available .availability-dot {
+  background: #4ade80;
+
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.7);
+}
+
+.availability.unavailable {
+  color: #f87171;
+}
+
+.availability.unavailable .availability-dot {
+  background: #f87171;
+
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.7);
+}
+
+.btn-ticket-details {
+  flex-shrink: 0;
+
+  background: transparent;
+
+  color: #fefeff;
+
+  border: 1px solid #fefeff;
+
+  padding: 11px 22px;
+
+  border-radius: 9px;
+
+  font-family: var(--font-body);
+
+  font-weight: 700;
+
+  font-size: 13.5px;
+
+  cursor: pointer;
+
+  transition: 0.15s ease;
+
+  white-space: nowrap;
+}
+
+.btn-ticket-details:hover {
+  background: #fefeff;
+
+  color: #0b0d11;
+}
+
+.btn-ticket-details:active {
+  transform: translateY(1px);
+}
+
+.ticket-card {
+  position: relative;
+}
+
+.tap-hint {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(10, 10, 12, 0.85);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}

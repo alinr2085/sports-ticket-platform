@@ -1,0 +1,459 @@
+:root {
+  --bg: #08080a;
+  --surface: #141417;
+  --surface-2: #1c1c20;
+  --border: #2a2a2f;
+  --text: #f5f5f7;
+  --text-dim: #9a9aa2;
+  --text-faint: #616168;
+  --gold: #d4af37;
+  --gold-dim: #8a7328;
+  --accent: #22c55e;
+}
+
+.ticket-card-details {
+  width: min(100%, 90%);
+  min-height: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: row-reverse;
+  color: var(--text);
+}
+
+.ticket-visual {
+  position: relative;
+  width: 64%;
+  min-width: 360px;
+  min-height: 440px;
+  overflow: hidden;
+  background: #000;
+}
+
+.visual-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.visual-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 10, 0.35) 0%, rgba(8, 8, 10, 0.35) 100%),
+    radial-gradient(
+      ellipse at 50% 55%,
+      rgba(8, 8, 10, 0.15) 0%,
+      rgba(8, 8, 10, 0.75) 100%
+    );
+}
+
+.sport-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sport-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.date-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-dim);
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.visual-center {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  right: 18px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.teams-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.team-ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 96px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+  flex: 1;
+  color: var(--text);
+}
+
+.team-ticket.home {
+  text-align: right;
+}
+
+.team-ticket.away {
+  text-align: left;
+}
+
+.vs {
+  font-family: "Oswald", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.venue-line {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 500;
+  text-align: center;
+}
+
+.perforation {
+  position: relative;
+  width: 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.perforation .notch {
+  position: absolute;
+  left: -11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: 2;
+}
+
+.perforation .notch.right {
+  top: auto;
+  right: auto;
+  bottom: -11px;
+}
+
+.perforation .notch.left {
+  top: -11px;
+  left: -11px;
+}
+
+.dash-line {
+  height: 100%;
+  border-left: 2px dashed var(--border);
+  margin: 4px 0;
+}
+
+.ticket-body {
+  flex: 1;
+  min-width: 0;
+  padding: 30px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  color: var(--text);
+}
+
+.row-2 {
+  display: flex;
+  gap: 10px;
+}
+
+.info-chip {
+  flex: 1;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.info-chip .label {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-faint);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.info-chip .value {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.section-label {
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.tier-pills {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tier-pill {
+  all: unset;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  padding: 9px 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  transition: all 0.2s ease;
+}
+
+.tier-pill.active {
+  background: var(--text);
+  color: #0a0a0a;
+  border-color: var(--text);
+}
+
+.tier-pill.active.vip {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  color: #1a1204;
+  border-color: var(--gold);
+}
+
+.seat-info {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.seat-chip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.vip-amenities {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.1),
+    rgba(212, 175, 55, 0.02)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.vip-amenities.hidden {
+  display: none;
+}
+
+.vip-amenities .amenity-title {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.amenity {
+  font-size: 12.5px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.divider {
+  border-top: 1px solid var(--border);
+}
+
+.reserve-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.qty-btn {
+  all: unset;
+  cursor: pointer;
+  width: 38px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.qty-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.qty-value {
+  width: 30px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.reserve-btn {
+  all: unset;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  background: var(--text);
+  color: #0a0a0a;
+  padding: 14px 10px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.15s ease;
+}
+
+.reserve-btn:hover {
+  transform: translateY(-1px);
+}
+
+.reserve-btn:active {
+  transform: translateY(0);
+}
+
+.reserve-btn .amt {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+}
+
+.low-capacity {
+  color: #f87171 !important;
+}
+
+@media (max-width: 760px) {
+  .ticket-card-details {
+    width: 100%;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .ticket-visual {
+    width: 100%;
+    min-width: 0;
+    min-height: 250px;
+    height: 250px;
+  }
+
+  .perforation {
+    width: 100%;
+    height: 0;
+  }
+
+  .perforation .notch {
+    left: auto;
+    top: -11px;
+  }
+
+  .perforation .notch.left {
+    left: -11px;
+  }
+
+  .perforation .notch.right {
+    right: -11px;
+    bottom: auto;
+  }
+
+  .dash-line {
+    width: 100%;
+    height: 0;
+    border-left: 0;
+    border-top: 2px dashed var(--border);
+    margin: 0 4px;
+  }
+
+  .ticket-body {
+    padding: 24px 20px 22px;
+  }
+
+  .team {
+    font-size: 15px;
+  }
+}
