@@ -229,3 +229,21 @@ CREATE TABLE Report (
     FOREIGN KEY (supportId)
         REFERENCES User(userId)
 );
+
+CREATE INDEX idx_match_status_date ON MatchTable(status, matchDate);
+CREATE INDEX idx_match_sport_date  ON MatchTable(sportId, matchDate);
+
+CREATE INDEX idx_ticket_match_status ON Ticket(matchId, status);
+
+CREATE INDEX idx_ticketcat_match_price ON TicketCategory(matchId, price);
+
+CREATE INDEX idx_reservation_status_expiry ON Reservation(status, expiresAt);
+
+CREATE INDEX idx_payment_status_date ON Payment(status, paymentDate);
+
+CREATE INDEX idx_cancellation_status ON Cancellation(status);
+CREATE INDEX idx_report_status_category ON Report(status, category);
+
+CREATE INDEX idx_user_city ON User(cityId);
+
+CREATE INDEX idx_user_regdate ON User(registrationDate);
